@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 #include <exception>
 
@@ -17,7 +18,7 @@ class Args
 		std::vector<char **> const &getOne(void) const;
 		std::vector<char **> const &getFive(void) const;
 
-		void setArrays(void);
+		void setArrays(char *program_name);
 
 		class AllocException: public std::exception {
 			public:

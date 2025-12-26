@@ -48,35 +48,44 @@ std::vector<char **> const &Args::getFive(void) const { return this->_five; }
 
 const char *Args::AllocException::what() const throw () { return "Allocation failed"; }
 
-void Args::setArrays(void) {
+void Args::setArrays(char *program_name) {
 	for (int i = 0; i != 100; i++){
-		this->_one[i] = new char *[2];
-		this->_five[i] = new char *[2];
+		this->_one[i] = new char *[3];
+		this->_five[i] = new char *[3];
 	}
 	int j = 0;
 	int k = 0;
 	std::string value_one;
 	std::string value_five;
 	for (size_t i = 0; i < 100000 - 1; i++){
-		if (j < 100 && i % 100 == 0){
-			this->_one[j][0] = strdup(value_one.c_str());
+		if (j < 100 && i > 0 && i % 100 == 0){
+			this->_one[j][0] = strdup(program_name);
 			if (!this->_one[j][0])
 				throw AllocException();
-			this->_one[j][1] = NULL;
+			this->_one[j][1] = strdup(value_one.c_str());
+			if (!this->_one[j][1])
+				throw AllocException();
+			this->_one[j][2] = NULL;
 			value_one.clear();
 			j++;
 		}
-		if (k < 100 && i % 500 == 0){
-			this->_five[k][0] = strdup(value_one.c_str());
+		if (k < 100 && i > 0 && i % 500 == 0){
+			this->_five[k][0] = strdup(program_name);
 			if (!this->_five[k][0])
 				throw AllocException();
-			this->_five[k][1] = NULL;
+			this->_five[k][1] = strdup(value_five.c_str());
+			if (!this->_five[k][1])
+				throw AllocException();
+			this->_five[k][2] = NULL;
 			value_five.clear();
 			k++;
 		}
-		value_one.append(std::to_string(this->_rand[i]));
-		value_one.push_back(' ');
-		value_five.append(std::to_string(this->_rand[i]));
+		std::string to_append = std::to_string(this->_rand[i]);
+		if (j < 100){
+			value_one.append(to_append);
+			value_one.push_back(' ');
+		}
+		value_five.append(to_append);
 		value_five.push_back(' ');
 		if (k >= 100)
 			break ;

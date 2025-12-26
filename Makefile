@@ -1,6 +1,6 @@
 NAME	=	average
 FLAGS	=	-Wall -Wextra -Werror
-FILES	=	main.cpp Args.cpp
+FILES	=	main.cpp Args.cpp Exec.cpp
 
 all : ${NAME}
 
