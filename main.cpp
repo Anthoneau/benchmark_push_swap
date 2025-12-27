@@ -10,10 +10,10 @@ int main(int ac, char **av, char **env) {
 		std::cerr << "\e[0;31mUsage:\e[0m\e[0;33m\t" << av[0]  << " \"program_path\"\e[0m" << std::endl;
 		std::exit(1);
 	}
-	Args args;
-	Exec exec;
 	try
 	{
+		Args args;
+		Exec exec;
 		args.setArrays(av[1]);
 		exec.run(args, av[1], env);
 	}

@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <iostream>
+#include <string.h>
 #include "Exec.hpp"
 
 const int FDERROR = 512;
@@ -69,6 +70,7 @@ int countMovements(char **args, char *program, char **env){
 		}
 		bzero(filebuf, READ);
 	}
+	free(filebuf);
 	close(pipe_fd[0]);
 	return count;
 }

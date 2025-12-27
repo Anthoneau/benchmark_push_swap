@@ -4,6 +4,7 @@
 #include <random>
 #include <string>
 #include <stdlib.h>
+#include <string.h>
 
 Args::Args(void){
 	this->_one.reserve(100);
@@ -32,11 +33,15 @@ Args::~Args(void){
 		if (this->_one[i]){
 			if (this->_one[i][0])
 				free(this->_one[i][0]);
+			if (this->_one[i][1])
+				free(this->_one[i][1]);
 			delete[] this->_one[i];
 		}
 		if (this->_five[i]){
 			if (this->_five[i][0])
 				free(this->_five[i][0]);
+			if (this->_five[i][1])
+				free(this->_five[i][1]);
 			delete[] this->_five[i];
 		}
 	}
