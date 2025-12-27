@@ -1,4 +1,4 @@
-NAME	=	average
+NAME	=	benchmark_push_swap
 FLAGS	=	-Wall -Wextra -Werror
 FILES	=	main.cpp Args.cpp Exec.cpp
 
