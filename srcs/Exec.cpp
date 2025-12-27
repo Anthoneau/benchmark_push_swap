@@ -2,11 +2,11 @@
 #include <sys/wait.h>
 #include <iostream>
 #include <string.h>
-#include "Exec.hpp"
+#include "../includes/Exec.hpp"
 
-const int FDERROR = 512;
-const int PROGRAMERROR = 768;
-const int ARGSERROR = 1024;
+const int FDERROR = 2;
+const int PROGRAMERROR = 3;
+const int ARGSERROR = 4;
 const int READ = 10;
 
 Exec::Exec(void){

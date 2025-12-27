@@ -2,8 +2,8 @@
 #include <unistd.h>
 #include <string>
 #include <sys/wait.h>
-#include "Args.hpp"
-#include "Exec.hpp"
+#include "../includes/Args.hpp"
+#include "../includes/Exec.hpp"
 
 int main(int ac, char **av, char **env) {
 	if (ac != 2){
